@@ -6,12 +6,18 @@
   --white-color: #fff;
   --black-color: #000;
   --text-color: #333;
-  --background-color: #fbfcff;
+  --background-color: #f1f2f1;
   --border-color: #dbdbdb;
+
+  // default layout
+  --default-layout-header-height: 90px;
+  --default-layout-width: 1150px;
 }
 
 * {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 html {
