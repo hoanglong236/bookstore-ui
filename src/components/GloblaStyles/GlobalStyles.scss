@@ -12,6 +12,8 @@
   // default layout
   --default-layout-header-height: 90px;
   --default-layout-width: 1150px;
+  // //  header
+  --header-wrapper-logo-width: 300px;
 }
 
 * {
@@ -27,8 +29,20 @@ html {
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
-  line-height: 1.5;
+  line-height: 1.6;
   box-sizing: border-box;
   background-color: var(--background-color);
   text-rendering: optimizeSpeed;
+}
+
+button,
+input,
+[tabindex] {
+  outline: none;
+  border: none;
+}
+
+a[href] {
+  text-decoration: none;
+  color: var(--text-color);
 }
