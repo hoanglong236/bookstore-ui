@@ -1,16 +1,40 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircleXmark,
+  faSpinner,
+  faMagnifyingGlass,
+  faEllipsisVertical,
+  faGlobe,
+  faQuestionCircle,
+  faKeyboard,
+} from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 import { useEffect, useState } from 'react';
 
 import styles from './Header.module.scss';
 import logo from '~/assets/images/logo.png';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { PopperMenu, PopperWrapper } from '~/components/Popper';
 import SearchResultItem from '~/components/SearchResultItem';
 import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
+
+const menu_items = [
+  {
+    icon: <FontAwesomeIcon icon={faGlobe}></FontAwesomeIcon>,
+    title: 'English',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faQuestionCircle}></FontAwesomeIcon>,
+    title: 'Feedback and help',
+    to: '/admin',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faKeyboard}></FontAwesomeIcon>,
+    title: 'Keyboard shortcut',
+  },
+];
 
 function Header() {
   const [searchResults, setSearchResults] = useState([]);
@@ -39,15 +63,11 @@ function Header() {
             <div className={cx('search-result')} tabIndex="-1" {...attrs}>
               <PopperWrapper>
                 <h4 className={cx('search-title')}>Result</h4>
-                <ul>
-                  {searchResults.map((result, index) => {
-                    return (
-                      <li key={index}>
-                        <SearchResultItem text={result.text} isHistory={result.isHistory}></SearchResultItem>
-                      </li>
-                    );
-                  })}
-                </ul>
+                {searchResults.map((result, index) => {
+                  return (
+                    <SearchResultItem key={index} text={result.text} isHistory={result.isHistory}></SearchResultItem>
+                  );
+                })}
               </PopperWrapper>
             </div>
           )}>
@@ -68,6 +88,12 @@ function Header() {
         <div className={cx('actions')}>
           <Button outlineStyle>Sign up</Button>
           <Button primaryStyle>Sign in</Button>
+
+          <PopperMenu items={menu_items}>
+            <button className={cx('more-btn')}>
+              <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
+            </button>
+          </PopperMenu>
         </div>
       </div>
     </header>
