@@ -10,10 +10,11 @@
   --border-color: #dbdbdb;
 
   // default layout
-  --default-layout-header-height: 90px;
-  --default-layout-width: 1150px;
+  --default-layout-header-height: 75px;
+  --default-layout-width: 1140px;
+  --default-layout-header-hgap: 12px;
   // //  header
-  --header-wrapper-logo-width: 300px;
+  --header-wrapper-logo-width: 285px;
 }
 
 * {

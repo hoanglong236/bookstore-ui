@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 function Button({
   to,
   href,
-  classNamesFromOtherComponent,
+  otherClassNames,
   rounded = false,
   primaryStyle = false,
   outlineStyle = false,
@@ -46,7 +46,7 @@ function Button({
   }
 
   const compClasses = cx('wrapper', {
-    [classNamesFromOtherComponent]: classNamesFromOtherComponent,
+    [otherClassNames]: otherClassNames,
     rounded,
     primary: primaryStyle,
     outline: outlineStyle,

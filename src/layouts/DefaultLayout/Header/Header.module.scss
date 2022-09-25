@@ -15,6 +15,7 @@
 .inner {
   height: 100%;
   width: var(--default-layout-width);
+  padding: 0 var(--default-layout-header-hgap);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,12 +31,14 @@
 
 .logo {
   width: 60px;
+  height: 62px;
+  object-fit: cover;
   margin-right: 16px;
 }
 
 .logo-title {
   color: var(--primary-color);
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 700;
 }
 
@@ -141,4 +144,26 @@
   margin-left: 8px;
   background-color: transparent;
   text-align: center;
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.action-btn {
+  display: flex;
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: 2.2rem;
+  padding: 10px 10px;
+  width: 50px;
+  color: var(--text-color);
+  background-color: transparent;
+  cursor: pointer;
 }

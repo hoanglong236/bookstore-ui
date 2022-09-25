@@ -1,6 +1,8 @@
 .wrapper {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  max-height: min((100vh - 100px) - var(--default-layout-header-height), 600px);
+  max-height: min((100vh - 96px) - var(--default-layout-header-height), 720px);
   min-height: 100px;
   background-color: rgb(255, 255, 255);
   box-shadow: rgb(0 0 0 / 12%) 0 2px 12px;
