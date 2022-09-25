@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 function Button({
   to,
   href,
-  otherClassNames,
+  className,
   rounded = false,
   primaryStyle = false,
   outlineStyle = false,
@@ -24,29 +24,29 @@ function Button({
 }) {
   let Comp = 'button';
 
-  const compProps = {
+  const props = {
     onClick,
     ...otherProps,
   };
 
   if (disabled) {
-    Object.keys(compProps).forEach((key) => {
-      if (key.startsWith('on') && typeof compProps[key] === 'function') {
-        delete compProps[key];
+    Object.keys(props).forEach((key) => {
+      if (key.startsWith('on') && typeof props[key] === 'function') {
+        delete props[key];
       }
     });
   }
 
   if (to) {
-    compProps.to = to;
+    props.to = to;
     Comp = Link;
   } else if (href) {
-    compProps.href = href;
+    props.href = href;
     Comp = 'a';
   }
 
-  const compClasses = cx('wrapper', {
-    [otherClassNames]: otherClassNames,
+  const classes = cx('wrapper', {
+    [className]: className,
     rounded,
     primary: primaryStyle,
     outline: outlineStyle,
@@ -57,7 +57,7 @@ function Button({
   });
 
   return (
-    <Comp className={compClasses} {...compProps}>
+    <Comp className={classes} {...props}>
       {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
       <span className={cx('content')}>{children}</span>
       {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}

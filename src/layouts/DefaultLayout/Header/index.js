@@ -8,12 +8,10 @@ import {
   faGlobe,
   faQuestionCircle,
   faKeyboard,
-  faBell,
-  faHeart,
-  faCartShopping,
   faGear,
   faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faHeart } from '@fortawesome/free-regular-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { useEffect, useState } from 'react';
 
@@ -23,6 +21,8 @@ import { PopperMenu, PopperWrapper } from '~/components/Popper';
 import SearchResultItem from '~/components/SearchResultItem';
 import Button from '~/components/Button';
 import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
+import { RegularCartShoppingIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -154,20 +154,20 @@ function Header() {
           {currentUser ? (
             <>
               <button className={cx('action-btn')}>
-                <FontAwesomeIcon icon={faBell}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faBell} width="2.2rem" height="2.2rem"></FontAwesomeIcon>
               </button>
               <button className={cx('action-btn')}>
-                <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faHeart} width="2.2rem" height="2.2rem"></FontAwesomeIcon>
               </button>
               <button className={cx('action-btn')}>
-                <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>
+                <RegularCartShoppingIcon width="2.2rem" height="2.2rem"></RegularCartShoppingIcon>
               </button>
 
               <PopperMenu items={user_menu} onChange={handlePropperMenuChange} offset={[10, 10]}>
-                <img
+                <Image
                   className={cx('user-avatar')}
                   src="https://www.travelanddestinations.com/wp-content/uploads/2019/10/Ban-Gioc-Detian-Waterfalls-closeup.jpg"
-                  alt="Avatar"></img>
+                  alt="Avatar"></Image>
               </PopperMenu>
             </>
           ) : (
