@@ -1,9 +1,6 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCircleXmark,
-  faSpinner,
-  faMagnifyingGlass,
   faEllipsisVertical,
   faGlobe,
   faQuestionCircle,
@@ -11,18 +8,15 @@ import {
   faGear,
   faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
-import { faBell, faHeart } from '@fortawesome/free-regular-svg-icons';
-import HeadlessTippy from '@tippyjs/react/headless';
-import { useEffect, useState } from 'react';
+import { faBell, faHeart, faAddressCard } from '@fortawesome/free-regular-svg-icons';
 
 import styles from './Header.module.scss';
 import logo from '~/assets/images/logo.png';
-import { PopperMenu, PopperWrapper } from '~/components/Popper';
-import SearchResultItem from '~/components/SearchResultItem';
+import { PopperMenu } from '~/components/Popper';
 import Button from '~/components/Button';
-import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
 import { RegularCartShoppingIcon } from '~/components/Icons';
 import Image from '~/components/Image';
+import SearchBar from '~/layouts/components/SearchBar';
 
 const cx = classNames.bind(styles);
 
@@ -90,18 +84,7 @@ const user_menu = [
 ];
 
 function Header() {
-  const [searchResults, setSearchResults] = useState([]);
-
   const currentUser = true;
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResults([
-        { text: 'Sach sach sach sach sach sach 12345', isHistory: true },
-        { text: 'Sach sach sach sach sach sach sach 53', isHistory: false },
-      ]);
-    }, 0);
-  }, []);
 
   // handle logic
   const handlePropperMenuChange = (menuItem) => {
@@ -121,34 +104,7 @@ function Header() {
           <div className={cx('logo-title')}>BookStore</div>
         </div>
 
-        <HeadlessTippy
-          interactive={true}
-          visible={searchResults.length > 0}
-          render={(attrs) => (
-            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-              <PopperWrapper>
-                <h4 className={cx('search-title')}>Result</h4>
-                {searchResults.map((result, index) => {
-                  return (
-                    <SearchResultItem key={index} text={result.text} isHistory={result.isHistory}></SearchResultItem>
-                  );
-                })}
-              </PopperWrapper>
-            </div>
-          )}>
-          <div className={cx('search')}>
-            <input placeholder="Search your books" spellCheck={false}></input>
-            <button className={cx('clear-btn')}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            <div className={cx('loading', 'loading--hidden')}>
-              <FontAwesomeIcon icon={faSpinner} />
-            </div>
-            <button className={cx('search-btn')}>
-              <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
-            </button>
-          </div>
-        </HeadlessTippy>
+        <SearchBar></SearchBar>
 
         <div className={cx('actions')}>
           {currentUser ? (
